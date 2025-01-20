@@ -1,8 +1,8 @@
 import { useState } from 'react'
+import StudentsList from '@/Students/StudentsList'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import StudentsList from './assets/Students/StudentsList'
 
 const STUDENTS = ['Alice', 'Bob', 'Charlie', 'David', 'Franck']
 
