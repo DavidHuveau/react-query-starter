@@ -1,4 +1,4 @@
-import UsersList from '@/Users/UsersList'
+import UsersList from './Users/UsersList'
 import './App.css'
 
 function App() {
