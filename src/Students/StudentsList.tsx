@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 const fetchStudents = async () => {
-  const response = await fetch('http://localhost:3000/api/V1/students');
+  const response = await fetch(import.meta.env.VITE_STUDENTS_API_URL);
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
@@ -11,7 +11,7 @@ const fetchStudents = async () => {
 };
 
 const updateStudent = async (id: number, name: string) => {
-  const response = await fetch(`http://localhost:3000/api/V1/students/${id}`, {
+  const response = await fetch(`${import.meta.env.VITE_STUDENTS_API_URL}/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({ name }),
@@ -23,7 +23,7 @@ const updateStudent = async (id: number, name: string) => {
 };
 
 const deleteStudent = async (id: number) => {
-  const response = await fetch(`http://localhost:3000/api/V1/students/${id}`, {
+  const response = await fetch(`${import.meta.env.VITE_STUDENTS_API_URL}/${id}`, {
     method: 'DELETE',
   });
   if (!response.ok) {

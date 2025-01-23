@@ -6,6 +6,8 @@ import App from './App.tsx'
 
 const queryClient = new QueryClient()
 
+console.log("mode: ", import.meta.env.VITE_MODE)
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
