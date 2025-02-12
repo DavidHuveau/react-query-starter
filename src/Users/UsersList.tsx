@@ -1,18 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { User } from './types';
 
-const fetchUsers = async () => {
-  const response = await fetch(import.meta.env.VITE_USERS_API_URL);
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return response.json();
-};
-
 const UsersList = () => {
   const { data, error, isLoading, refetch } = useQuery({
     queryKey: ['users'],
-    queryFn: fetchUsers
+    queryFn: () => 
+      fetch(import.meta.env.VITE_USERS_API_URL).then((response) =>
+        response.json()
+      ),
   });
 
   if (isLoading) return <div>Loading...</div>;
