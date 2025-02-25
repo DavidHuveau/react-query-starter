@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import UsersList from './Users//UsersList';
 import StudentsList from './Students/StudentsList';
+import UserForm from './Users/UserForm';
 import './App.css'
 
 const App = () => {
@@ -21,12 +22,16 @@ const App = () => {
             <li>
               <Link to="/students">Students List</Link>
             </li>
+            <li>
+              <Link to="/users/new">New User</Link>
+            </li>
           </ul>
         </nav>
 
         <div style={{ flex: 1, padding: '20px' }}>
           <Routes>
             <Route path="/users" element={<UsersList />} />
+            <Route path="/users/new" element={<UserForm />} />
             <Route path="/students" element={<StudentsList />} />
           </Routes>
         </div>

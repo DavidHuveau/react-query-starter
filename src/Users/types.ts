@@ -26,4 +26,5 @@ export type User = {
   phone: string;
   website: string;
   company: Company;
+  isDeveloper: boolean;
 };
