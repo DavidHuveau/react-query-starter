@@ -15,7 +15,6 @@ const UserForm = () => {
     alert(JSON.stringify(data));
   };
 
-  console.log(errors);
   console.log(watch("name")) 
 
   return (
@@ -26,6 +25,7 @@ const UserForm = () => {
           id="Name"
           placeholder="bill"
           {...register("name", { required: true, maxLength: 10 })}
+          aria-invalid={errors.name ? "true" : "false"}
         />
       {errors?.name && errors.name.type === "required" && <p>Name is required</p>}
       {errors?.name && errors.name.type === "maxLength" && <p>MaxLength is reached</p>}
@@ -36,10 +36,13 @@ const UserForm = () => {
         <input
           id="username"
           placeholder="billou"
-          {...register("username", { required: true, maxLength: 10 })}
+          {...register("username", { 
+            required: "Username is required", 
+            maxLength: { value: 10, message: "Max length is 10 characters" }
+          })}
+          aria-invalid={errors.username ? "true" : "false"}
         />
-      {errors?.username && errors.username.type === "required" && <p>Username is required</p>}
-      {errors?.username && errors.username.type === "maxLength" && <p>MaxLength is reached</p>}
+      {errors?.username && <p>{errors.username.message}</p>}
       </div>
 
       <div>
@@ -59,6 +62,7 @@ const UserForm = () => {
           id="email"
           placeholder="bill@hotmail.com"
           {...register("email", { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
+          aria-invalid={errors.email ? "true" : "false"}
         />
       {errors?.email && errors.email.type === "required" && <p>Email is required</p>}
       {errors?.email && errors.email.type === "pattern" && <p>Email is not valid</p>}
